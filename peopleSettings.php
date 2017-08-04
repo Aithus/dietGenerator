@@ -1,4 +1,7 @@
-!empty<html>
+<?php
+include("com/zugriff.inc.mp4");
+?>
+<html>
 <head>
   <title>Speiseplan erstellen</title>
 </head>
@@ -33,6 +36,15 @@
     if(!empty($_POST["next"])) {
       echo "Knopf gedrückt!";
       if($_POST["personen"] == "gleich") {
+        if(!empty($_POST["anzahlGleich"])) {
+          $sql1 = "INSERT INTO pufferSpeicher " . "(id, montagMittag, dienstagMittag, mittwochMittag, donnerstagMittag, freitagMittag, samstagMittag, sonntagMittag, montagAbend, dienstagAbend, mittwochAbend, donnerstagAbend, freitagAbend, samstagAbend, sonntagAbend, gleichbleibend) VALUES ('', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '$_POST[anzahlGleich]')";
+          if(mysqli_query($db, $sql1)) {
+            echo "Abfrage Erfolgreich!";
+          } else {
+            echo "Abfrage nicht erfolgreich!";
+            echo $sql1;
+          }
+        }
         echo "Gleich!";
       }
       if($_POST["personen"] == "verschieden") {
@@ -95,8 +107,18 @@
           echo $i;
         }
         if($i == 14) {
+          /*$db = @mysqli_connect("localhost", "root") or die("Verbindung zu MySQl gescheitert!");
+          mysqli_set_charset($db, "utf8");
+          @mysqli_select_db($db, "dietGenerator") or die("Datenbankverbindung gescheitert!");*/
+
           echo "Alles wurde ausgefüllt";
-          
+          $sql2 = "INSERT INTO pufferSpeicher " . "(id, montagMittag, dienstagMittag, mittwochMittag, donnerstagMittag, freitagMittag, samstagMittag, sonntagMittag, montagAbend, dienstagAbend, mittwochAbend, donnerstagAbend, freitagAbend, samstagAbend, sonntagAbend, gleichbleibend) VALUES ('', '$_POST[mittagMontag]', '$_POST[mittagDienstag]', '$_POST[mittagMittwoch]', '$_POST[mittagDonnerstag]', '$_POST[mittagFreitag]', '$_POST[mittagSamstag]', '$_POST[mittagSonntag]', '$_POST[abendMontag]', '$_POST[abendDienstag]', '$_POST[abendMittwoch]', '$_POST[abendDonnerstag]', '$_POST[abendFreitag]', '$_POST[abendSamstag]', '$_POST[abendSonntag]', '0')";
+          if(mysqli_query($db, $sql2)) {
+            echo "Abfrage Erfolgreich!";
+          } else {
+            echo "Abfrage nicht erfolgreich!";
+            echo $sql2;
+          }
         } else {
           echo "Bitte alles ausfüllen, oder die andere Variante nehmen";
         }
