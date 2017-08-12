@@ -40,7 +40,7 @@ include("com/zugriff.inc.mp4");
           $sql1 = "INSERT INTO pufferSpeicher " . "(id, montagMittag, dienstagMittag, mittwochMittag, donnerstagMittag, freitagMittag, samstagMittag, sonntagMittag, montagAbend, dienstagAbend, mittwochAbend, donnerstagAbend, freitagAbend, samstagAbend, sonntagAbend, gleichbleibend) VALUES ('', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '$_POST[anzahlGleich]')";
           if(mysqli_query($db, $sql1)) {
             echo "Abfrage Erfolgreich!";
-            header("Location: createDiet.php");
+            //header("Location: createDiet.php");
           } else {
             echo "Abfrage nicht erfolgreich!";
             echo $sql1;
@@ -116,7 +116,7 @@ include("com/zugriff.inc.mp4");
           $sql2 = "INSERT INTO pufferSpeicher " . "(id, montagMittag, dienstagMittag, mittwochMittag, donnerstagMittag, freitagMittag, samstagMittag, sonntagMittag, montagAbend, dienstagAbend, mittwochAbend, donnerstagAbend, freitagAbend, samstagAbend, sonntagAbend, gleichbleibend) VALUES ('', '$_POST[mittagMontag]', '$_POST[mittagDienstag]', '$_POST[mittagMittwoch]', '$_POST[mittagDonnerstag]', '$_POST[mittagFreitag]', '$_POST[mittagSamstag]', '$_POST[mittagSonntag]', '$_POST[abendMontag]', '$_POST[abendDienstag]', '$_POST[abendMittwoch]', '$_POST[abendDonnerstag]', '$_POST[abendFreitag]', '$_POST[abendSamstag]', '$_POST[abendSonntag]', '0')";
           if(mysqli_query($db, $sql2)) {
             echo "Abfrage Erfolgreich!";
-            header("Location: createDiet.php");
+            //header("Location: createDiet.php");
           } else {
             echo "Abfrage nicht erfolgreich!";
             echo $sql2;
